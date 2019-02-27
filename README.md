@@ -1,4 +1,4 @@
 # operating-system
 
-CS302 in SUSTech
-Yi Zhao Copyright
+CS302 in SUSTech \
+Copyright@2019 Yi Zhao
