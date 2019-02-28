@@ -12,17 +12,30 @@ do
     for i in `seq $count $(($folder_num-1))`
     do
         root_dir=${folder_list[$i]}
-        items=`ls $root_dir`
+        items=`ls -a $root_dir`
+        count=0
         echo "[$root_dir]"
         for item in $items
         do
+            let "count++"
+            if [ $count -le 2 ] ;
+            then
+                continue
+            fi
             echo "$root_dir$item"
             let "total_num++"
         done
         echo ""
-        folders=`ls -F $root_dir | grep /`
+        folders=`ls -abF $root_dir | grep /`
+        count=0
         for folder in $folders
         do
+            let "count++"
+            if [ $count -le 2 ] ;
+            then
+                continue
+            fi
+            echo $folder
             folder_list[$folder_num]="$root_dir$folder"
             let "folder_num++"
         done
