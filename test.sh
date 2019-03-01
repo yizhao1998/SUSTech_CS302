@@ -1,6 +1,9 @@
 #!/bin/bash
 
-root_dir='/home/yi/Downloads/'
+root_dir='/home/yi/test/'
+IFS_OLD=$IFS
+
+IFS=$'\t,\n'
 
 folder_list=($root_dir)
 folder_num=1
@@ -12,29 +15,17 @@ do
     for i in `seq $count $(($folder_num-1))`
     do
         root_dir=${folder_list[$i]}
-        items=`ls -a $root_dir`
-        count=0
+        items=`ls $root_dir`
         echo "[$root_dir]"
         for item in $items
         do
-            let "count++"
-            if [ $count -le 2 ] ;
-            then
-                continue
-            fi
             echo "$root_dir$item"
             let "total_num++"
         done
         echo ""
-        folders=`ls -abF $root_dir | grep /`
-        count=0
+        folders=`ls -F $root_dir | grep /`
         for folder in $folders
         do
-            let "count++"
-            if [ $count -le 2 ] ;
-            then
-                continue
-            fi
             echo $folder
             folder_list[$folder_num]="$root_dir$folder"
             let "folder_num++"
@@ -47,3 +38,5 @@ done
 echo "[ Directories Count ]:$folder_num"
 echo ""
 echo "[ Files Count ]:$(($total_num - $folder_num))"
+
+IFS=$IFS_OLD
