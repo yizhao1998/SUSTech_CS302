@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_dir='/home/yi/Downloads/'
+root_dir=$1
 if [ "${root_dir:0-1:1}" != "/" ]
 then
     root_dir=$root_dir"/"
@@ -8,6 +8,8 @@ fi
 # echo $root_dir
 root_dir=`cd $root_dir; pwd`"/"
 # echo $root_dir
+
+cat /dev/null > $2
 
 IFS_OLD=$IFS
 
@@ -26,13 +28,13 @@ do
         items=`ls $root_dir`
         print_dir=${root_dir%/*}
         print_dir=${print_dir##*/}
-        echo "[$print_dir]"
+        echo "[$print_dir]" >> $2
         for item in $items
         do
-            echo "$root_dir$item"
+            echo "$root_dir$item" >> $2
             let "total_num++"
         done
-        echo ""
+        echo "" >> $2
         folders=`ls -F $root_dir | grep /`
         for folder in $folders
         do
@@ -45,7 +47,7 @@ do
     count=$temp
 done
 
-echo "[Directories Count]:$folder_num"
-echo "[Files Count]:$(($total_num - $folder_num))"
+echo "[Directories Count]:$(($folder_num - 1))" >> $2
+echo "[Files Count]:$(($total_num - $folder_num))" >> $2
 
 IFS=$IFS_OLD
