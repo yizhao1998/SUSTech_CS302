@@ -164,6 +164,9 @@ void jobswitch()
 		kill(current->job->pid, SIGCONT);
 		return;
 		
+	////////////////////////////////////	
+	// should compare current and next//
+	////////////////////////////////////
 	} else if (next != NULL && current != NULL) { /* do switch */
 		
 		kill(current->job->pid, SIGSTOP);
@@ -172,15 +175,22 @@ void jobswitch()
 		current->job->state = READY;
 		
 		/* move back to the queue */
-		
-		if (head) {
-			for (p = head; p->next != NULL; p = p->next);
-			p->next = current;
-		} else {
-			head = current;
+		if(current->job->curpri > next->job->curpri){
+			if (head) {
+				for (p = head; p->next != NULL; p = p->next);
+				p->next = next;
+			} else {
+				head = next;
+			}
+		}else{			
+			if (head) {
+				for (p = head; p->next != NULL; p = p->next);
+				p->next = current;
+			} else {
+				head = current;
+			}
+			current = next;		
 		}
-		
-		current = next;
 		next = NULL;
 		current->job->state = RUNNING;
 		kill(current->job->pid, SIGCONT);
@@ -383,10 +393,7 @@ void do_deq(struct jobcmd deqcmd)
 				}else{
 					selectprev->next = select->next;
 				}
-				if(select){
-					select->next=NULL;
-				}
-				
+				select->next=NULL;
 			}
 		}
 
@@ -483,7 +490,7 @@ int main()
 	
 	/* open global file for job output */
 	
-	if ((globalfd = open("/dev/null",O_WRONLY)) < 0)
+	if ((globalfd = open("1.txt",O_WRONLY)) < 0)
 		error_sys("open global file failed");
 	
 	/* setup signal handler */
