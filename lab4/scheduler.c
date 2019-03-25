@@ -383,7 +383,10 @@ void do_deq(struct jobcmd deqcmd)
 				}else{
 					selectprev->next = select->next;
 				}
-				select->next=NULL;
+				if(select){
+					select->next=NULL;
+				}
+				
 			}
 		}
 
@@ -480,7 +483,7 @@ int main()
 	
 	/* open global file for job output */
 	
-	if ((globalfd = open("1.txt",O_WRONLY)) < 0)
+	if ((globalfd = open("/dev/null",O_WRONLY)) < 0)
 		error_sys("open global file failed");
 	
 	/* setup signal handler */
