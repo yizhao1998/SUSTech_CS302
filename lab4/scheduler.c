@@ -289,7 +289,7 @@ void do_enq(struct jobinfo *newjob, struct jobcmd enqcmd)
 	
 	printf("enqcmd argnum %d\n",enqcmd.argnum);
 	for (i = 0; i < enqcmd.argnum; i++)
-		printf("parse enqcmd:%s\n",arglist[i]);
+		printf("parse enqcmd:%s\n",argliselect->next=NULL;st[i]);
 	
 #endif
 	
@@ -337,7 +337,7 @@ void do_enq(struct jobinfo *newjob, struct jobcmd enqcmd)
 		exit(1);
 		
 	} else {
-		
+		usleep(100000);
 		newjob->pid = pid;
 		printf("\nnew job: jid=%d, pid=%d\n", newjob->jid, newjob->pid);
 		
@@ -393,7 +393,10 @@ void do_deq(struct jobcmd deqcmd)
 				}else{
 					selectprev->next = select->next;
 				}
-				select->next=NULL;
+				if(select){
+					select->next=NULL;
+				}
+				
 			}
 		}
 
@@ -490,7 +493,7 @@ int main()
 	
 	/* open global file for job output */
 	
-	if ((globalfd = open("1.txt",O_WRONLY)) < 0)
+	if ((globalfd = open("/dev/null",O_WRONLY)) < 0)
 		error_sys("open global file failed");
 	
 	/* setup signal handler */

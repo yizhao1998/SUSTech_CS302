@@ -16,11 +16,11 @@ int main(){
         printf("fork fail\n");
     }
     if(pid == 0){
-        raise(SIGSTOP);
+        sleep(199);
         printf("free now!!!\n");
         exit(-1);
     }else{
         printf("%d\n", pid);
-        sleep(100);
+        wait(0);
     }
 }
