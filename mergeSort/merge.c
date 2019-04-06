@@ -120,7 +120,7 @@ int main()
     printf ("\n");
 
     // calculating time taken in applying merge sort
-    printf("Time taken: %f\n",(endingTime - startingTime)/(double)CLOCKS_PER_SEC);
+    printf("Time taken: %d ms \n",(endingTime - startingTime)/(double)CLOCKS_PER_SEC);
     // pthread_exit(NULL);
     return 0;
 }

@@ -4,32 +4,20 @@
 #include <time.h>
 #include <string.h>
 #include <stdio.h>
-#include <sys/time.h>
 
-#define MAX_ARRAY_SIZE 1000 
+#define MAX_ARRAY_SIZE 10000
 int arr[MAX_ARRAY_SIZE];
-int new_arr[MAX_ARRAY_SIZE];
-
-#define MAX_THREAD_NUM 8
-
-int thread_num;
-
-// return ms
-long get_current_time(){
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
-}
 
 struct node {
     int l;
     int r;
 };
 
-void merge(int l, int mid, int r) {
+void merge(const int l, const int r) {
+    int mid = (l + r) / 2;
     int iter_1 = l;
     int iter_2 = mid + 1;
-    memcpy(new_arr, arr+l, sizeof(int) * (r-l+1));
+    int new_arr[r - l + 1];
     int iter = 0;
     while (iter_1 <= mid && iter_2 <= r) {
         if (arr[iter_1] < arr[iter_2]) {
@@ -47,7 +35,9 @@ void merge(int l, int mid, int r) {
             new_arr[iter++] = arr[iter_2++];
         }
     }
-    memcpy(arr+l, new_arr, sizeof(int) * (r-l+1));
+    for (int i = l; i <= r; ++i) {
+        arr[i] = new_arr[i - l];
+    }
 }
 
 void *merge_sort(void *args) {
@@ -66,8 +56,37 @@ void *merge_sort(void *args) {
     n2->r = r;
     merge_sort(n1);
     merge_sort(n2);
-    merge(l, (l+r)/2, r);
+    merge(l, r);
     free(n1);
     free(n2);
+    return 0;
+}
+
+int main() {
+    freopen("1.out", "w", stdout);
+    clock_t start,finish;
+    double totaltime;
+    start=clock();
+    struct node *n = (struct node *) malloc(sizeof(struct node *));
+    srand(time(NULL));
+    printf("Initial Array:\n");
+    for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
+        arr[i] = rand() % 40 - 20;
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    n->l = 0;
+    n->r = MAX_ARRAY_SIZE - 1;
+    merge_sort(n);
+    printf("Sorted Array:\n");
+    for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    free(n);
+    finish=clock();
+    totaltime=(double)(finish-start);
+    printf("\n此程序的运行时间为%d us！", totaltime);
+    printf("\nsinglemerge");
     return 0;
 }
