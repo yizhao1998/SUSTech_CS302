@@ -11,7 +11,6 @@ void *reader(int *buffer){
     if(--readcount == 0){
         sem_post(&db);
     }
-    sem_post(&rc);
-    sleep (1);  
+    sem_post(&rc);  
 }
 
