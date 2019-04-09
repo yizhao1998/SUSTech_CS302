@@ -1,0 +1,28 @@
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.7
+              Built from SVN snapshot on November 2, 2014
+                  Compiled on Apr  7 2019 at 02:52:56
+========================================================================
+PiLo hda1
+Loading..........
+Kernel command line: -q -mlfqs run mlfqs-load-1
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  159,000 loops/s.
+Boot complete.
+Executing 'mlfqs-load-1':
+(mlfqs-load-1) begin
+(mlfqs-load-1) spinning for up to 45 seconds, please wait...
+(mlfqs-load-1) load average rose to 0.5 after 41 seconds
+(mlfqs-load-1) sleeping for another 10 seconds, please wait...
+(mlfqs-load-1) load average fell back below 0.5 (to 0.43)
+(mlfqs-load-1) PASS
+(mlfqs-load-1) end
+Execution of 'mlfqs-load-1' complete.
+Timer: 5223 ticks
+Thread: 1000 idle ticks, 4226 kernel ticks, 0 user ticks
+Console: 646 characters output
+Keyboard: 0 keys pressed
+Powering off..

@@ -1,0 +1,31 @@
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.7
+              Built from SVN snapshot on November 2, 2014
+                  Compiled on Apr  7 2019 at 02:52:56
+========================================================================
+PiLo hda1
+Loading..........
+Kernel command line: -q run priority-donate-one
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  161,200 loops/s.
+Boot complete.
+Executing 'priority-donate-one':
+(priority-donate-one) begin
+(priority-donate-one) This thread should have priority 32.  Actual priority: 32.
+(priority-donate-one) This thread should have priority 33.  Actual priority: 33.
+(priority-donate-one) acquire2: got the lock
+(priority-donate-one) acquire2: done
+(priority-donate-one) acquire1: got the lock
+(priority-donate-one) acquire1: done
+(priority-donate-one) acquire2, acquire1 must already have finished, in that order.
+(priority-donate-one) This should be the last line before finishing this test.
+(priority-donate-one) end
+Execution of 'priority-donate-one' complete.
+Timer: 96 ticks
+Thread: 2 idle ticks, 97 kernel ticks, 0 user ticks
+Console: 897 characters output
+Keyboard: 0 keys pressed
+Powering off..

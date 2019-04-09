@@ -1,0 +1,30 @@
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.7
+              Built from SVN snapshot on November 2, 2014
+                  Compiled on Apr  7 2019 at 02:52:56
+========================================================================
+PiLo hda1
+Loading..........
+Kernel command line: -q run priority-preempt
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  161,200 loops/s.
+Boot complete.
+Executing 'priority-preempt':
+(priority-preempt) begin
+(priority-preempt) Thread high-priority iteration 0
+(priority-preempt) Thread high-priority iteration 1
+(priority-preempt) Thread high-priority iteration 2
+(priority-preempt) Thread high-priority iteration 3
+(priority-preempt) Thread high-priority iteration 4
+(priority-preempt) Thread high-priority done!
+(priority-preempt) The high-priority thread should have already completed.
+(priority-preempt) end
+Execution of 'priority-preempt' complete.
+Timer: 80 ticks
+Thread: 5 idle ticks, 77 kernel ticks, 0 user ticks
+Console: 774 characters output
+Keyboard: 0 keys pressed
+Powering off..
