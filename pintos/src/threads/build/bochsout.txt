@@ -31,7 +31,7 @@
 00000000000i[      ]   SB16 support: no
 00000000000i[      ]   USB support: no
 00000000000i[      ]   VGA extension support: vbe
-00000000000i[MEM0  ] allocated memory at 0x7ffa176b2010. after alignment, vector=0x7ffa176b3000
+00000000000i[MEM0  ] allocated memory at 0x7fc9c0b5f010. after alignment, vector=0x7fc9c0b60000
 00000000000i[MEM0  ] 4.00MB
 00000000000i[MEM0  ] mem block size = 0x00100000, blocks=4
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -64,7 +64,7 @@
 00000000000i[PLUGIN] init_dev of 'keyboard' plugin device by virtual method
 00000000000i[KBD   ] will paste characters every 400 keyboard ticks
 00000000000i[PLUGIN] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD    ] HD on ata0-0: '/tmp/CApdGI5MNn.dsk', 'flat' mode
+00000000000i[HD    ] HD on ata0-0: '/tmp/uEw0nUjKeM.dsk', 'flat' mode
 00000000000i[IMG   ] hd_size: 516096
 00000000000i[HD    ] ata0-0: using specified geometry: CHS=1/16/63
 00000000000i[HD    ] Using boot sequence disk, none, none
@@ -170,7 +170,6 @@
 00001844193i[BIOS  ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
 00005722586i[BIOS  ] IDE time out
 00008766512i[BIOS  ] Booting from 0000:7c00
-00038042972i[NOGUI ] ips = 38.043M
 00040321216p[ACPI  ] >>PANIC<< ACPI control: soft power off
 00040321216i[CPU0  ] CPU is in protected mode (active)
 00040321216i[CPU0  ] CS.mode = 32 bit
