@@ -436,7 +436,6 @@ void kill_process() { //杀死某个进程
 void Usemy_algo(int id) {
     if (id == 0) {
         func = first_fit;
-        printf("");
     } else if (id == 1) {
         func = best_fit;
     } else if (id == 2) {
