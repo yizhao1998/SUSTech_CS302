@@ -1,0 +1,3 @@
+/home/yi/Code/cpp/clion_projects/lab9/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/yi/Code/cpp/clion_projects/lab9/cmake-build-debug/CMakeFiles/lab9.dir
+/home/yi/Code/cpp/clion_projects/lab9/cmake-build-debug/CMakeFiles/edit_cache.dir

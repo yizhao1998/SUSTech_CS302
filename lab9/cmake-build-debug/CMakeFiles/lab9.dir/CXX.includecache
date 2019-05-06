@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yi/Code/cpp/clion_projects/lab9/main.cpp
+cstdio
+-
+cstring
+-
+queue
+-
+map
+-
+set
+-
+iostream
+-
+cmath
+-
+list
+-
+vector
+-
+algorithm
+-
+
