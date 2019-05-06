@@ -252,7 +252,7 @@ int second_chance(){
 }
 
 int main(){
-    freopen("3.in", "r", stdin);
+    //freopen("3.in", "r", stdin);
     // cache size
     scanf("%d", &K);
     scanf("%d", &A);
