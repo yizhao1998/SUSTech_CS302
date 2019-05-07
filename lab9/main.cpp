@@ -1,6 +1,8 @@
 #include <cstdio>
 #include <cstring>
 #include <queue>
+#include <unordered_map>
+#include <unordered_set>
 #include <map>
 #include <set>
 #include <iostream>
@@ -8,6 +10,7 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <ctime>
 
 using namespace std;
 typedef pair<int, int> pii;
@@ -15,18 +18,18 @@ int K;
 int A;
 int N;
 
-int fifo(){
+int fifo() {
     int hit = 0;
     int order[N];
     queue<int> que;
-    set<int> ele_set;
-    for(int i=0;i<N;i++){
+    unordered_set<int> ele_set;
+    for (int i = 0; i < N; i++) {
         scanf("%d", &order[i]);
     }
-    for(int i=0;i<N;i++){
+    for (int i = 0; i < N; i++) {
         // miss
-        if(ele_set.find(order[i]) == ele_set.end()){
-            if(que.size() == K){
+        if (ele_set.find(order[i]) == ele_set.end()) {
+            if (que.size() == K) {
                 int f = que.front();
                 que.pop();
                 auto iter = ele_set.find(f);
@@ -35,26 +38,26 @@ int fifo(){
             que.push(order[i]);
             ele_set.insert(order[i]);
         }
-        // hit
-        else{
+            // hit
+        else {
             hit++;
         }
     }
     return hit;
 }
 
-int lru(){
+int lru() {
     int hit = 0;
     int order[N];
     list<int> ls;
-    map<int, list<int>::iterator> pos_map;
-    for(int i=0;i<N;i++){
+    unordered_map<int, list<int>::iterator> pos_map;
+    for (int i = 0; i < N; i++) {
         scanf("%d", &order[i]);
     }
-    for(int i=0;i<N;i++){
+    for (int i = 0; i < N; i++) {
         // miss
-        if(pos_map.find(order[i]) == pos_map.end()){
-            if(pos_map.size() == K){
+        if (pos_map.find(order[i]) == pos_map.end()) {
+            if (pos_map.size() == K) {
                 int ind = ls.front();
                 ls.pop_front();
                 pos_map.erase(pos_map.find(ind));
@@ -64,7 +67,7 @@ int lru(){
         }
             // hit
             // adjust the used list
-        else{
+        else {
             hit++;
             auto pos = pos_map[order[i]];
             ls.erase(pos);
@@ -75,39 +78,38 @@ int lru(){
     return hit;
 }
 
-int min(){
+int min() {
     int hit = 0;
     int order[N];
     list<int> ls;
-    map<int, list<int>> mls;
-    map<int, list<int>::iterator> pos_map;
-    for(int i=0;i<N;i++){
+    unordered_map<int, list<int>> mls;
+    unordered_map<int, list<int>::iterator> pos_map;
+    for (int i = 0; i < N; i++) {
         scanf("%d", &order[i]);
         mls[order[i]].push_back(i);
     }
-    for(int i=0;i<N;i++){
-        mls[order[i]].push_back(N+1);
+    for (int i = 0; i < N; i++) {
+        mls[order[i]].push_back(N + 1);
     }
-    for(int i=0;i<N;i++){
+    for (int i = 0; i < N; i++) {
         // miss
-        if(pos_map.find(order[i]) == pos_map.end()){
-            if(pos_map.size() == K){
+        if (pos_map.find(order[i]) == pos_map.end()) {
+            if (pos_map.size() == K) {
                 int max_pos = -1;
                 int max_num = -1;
                 for (auto &iter : pos_map) {
-                    auto it=mls[iter.first].begin();
-                    while(it != mls[iter.first].end()){
-                        if(*it < i){
+                    auto it = mls[iter.first].begin();
+                    while (it != mls[iter.first].end()) {
+                        if (*it < i) {
                             mls[iter.first].pop_front();
-                        }
-                        else{
-                            if(*it > max_num){
+                        } else {
+                            if (*it > max_num) {
                                 max_pos = iter.first;
                                 max_num = *it;
                             }
                             break;
                         }
-                        it=mls[iter.first].begin();
+                        it = mls[iter.first].begin();
                     }
                 }
                 ls.erase(pos_map[max_pos]);
@@ -115,45 +117,49 @@ int min(){
             }
             ls.push_back(order[i]);
             pos_map[order[i]] = --ls.end();
-        }
-        else{
+        } else {
             hit++;
         }
     }
     return hit;
 }
 
-int get_ind(int ind){
-    while(ind > K){
+int get_ind(int ind) {
+    while (ind > K) {
         ind -= K;
     }
     return ind;
 }
 
-vector<pii>::iterator _find(vector<pii> &vec, int find_ele){
-    for(auto it = vec.begin(); it != vec.end(); it++){
-        if(it->first == find_ele){
+vector<pii>::iterator _find(vector<pii> &vec, int find_ele) {
+    for (auto it = vec.begin(); it != vec.end(); it++) {
+        if (it->first == find_ele) {
             return it;
         }
     }
     return vec.end();
 }
 
-int _clock(){
+int _clock() {
     int hit = 0;
     int order[N];
     int hand = 1;
     vector<pii> vec(static_cast<unsigned long>(N + 1), {-1, 0});
-    for(int i=0;i<N;i++){
+    unordered_set<int> ele_set;
+    for (int i = 0; i < N; i++) {
         scanf("%d", &order[i]);
     }
-    for(int i=0;i<N;i++){
-        auto iter = _find(vec, order[i]);
+    for (int i = 0; i < N; i++) {
+//        printf("%d\n", i);
         // miss
-        if(iter == vec.end()){
-            while(true){
-                if(vec[hand].second == 0){
+        if (ele_set.find(order[i]) == ele_set.end()) {
+            while (true) {
+                if (vec[hand].second == 0) {
+                    if (ele_set.find(vec[hand].first) != ele_set.end()) {
+                        ele_set.erase(ele_set.find(vec[hand].first));
+                    }
                     vec[hand].first = order[i];
+                    ele_set.insert(vec[hand].first);
                     vec[hand].second = 1;
                     break;
                 }
@@ -162,35 +168,36 @@ int _clock(){
             }
             hand = get_ind(++hand);
         }
-        // hit
-        else{
+            // hit
+        else {
             hit++;
+            auto iter = _find(vec, order[i]);
             iter->second = 1;
         }
     }
     return hit;
 }
 
-int second_chance(){
+int second_chance() {
     int hit = 0;
     int order[N];
     int fifo_size = K / 2;
     int lru_size = K - K / 2;
     queue<int> que;
-    set<int> ele_set;
+    unordered_set<int> ele_set;
     list<int> ls;
-    map<int, list<int>::iterator> pos_map;
-    for(int i=0;i<N;i++){
+    unordered_map<int, list<int>::iterator> pos_map;
+    for (int i = 0; i < N; i++) {
         scanf("%d", &order[i]);
     }
-    for(int i=0;i<N;i++){
+    for (int i = 0; i < N; i++) {
         // hit
         auto set_find = ele_set.find(order[i]);
         auto map_find = pos_map.find(order[i]);
-        if(set_find != ele_set.end() || map_find != pos_map.end()){
+        if (set_find != ele_set.end() || map_find != pos_map.end()) {
             hit++;
             // e
-            if(map_find != pos_map.end()){
+            if (map_find != pos_map.end()) {
                 // lru erase
                 int item = map_find->first;
                 ls.erase(map_find->second);
@@ -207,17 +214,17 @@ int second_chance(){
                 que.push(item);
                 ele_set.insert(item);
             }
-        }else{
+        } else {
             // b
-            if(que.size() < fifo_size){
+            if (que.size() < fifo_size) {
                 que.push(order[i]);
                 ele_set.insert(order[i]);
             }
-            // c
-            else if(que.size() == fifo_size && ls.size() < lru_size){
+                // c
+            else if (que.size() == fifo_size && ls.size() < lru_size) {
                 // fifo pop
                 int f = que.front();
-                qu  e.pop();
+                que.pop();
                 auto iter = ele_set.find(f);
                 ele_set.erase(iter);
                 // fifo push
@@ -227,8 +234,8 @@ int second_chance(){
                 ls.push_back(f);
                 pos_map[f] = --ls.end();
             }
-            // d
-            else if(que.size() == fifo_size && ls.size() == lru_size){
+                // d
+            else if (que.size() == fifo_size && ls.size() == lru_size) {
                 // lru pop
                 int ind = ls.front();
                 ls.pop_front();
@@ -251,14 +258,16 @@ int second_chance(){
     return hit;
 }
 
-int main(){
-    freopen("3.in", "r", stdin);
+int main() {
+//    freopen("1.in", "r", stdin);
     // cache size
+    clock_t start_t, end_t;
+    start_t = clock();
     scanf("%d", &K);
     scanf("%d", &A);
     scanf("%d", &N);
     int hit;
-    switch(A){
+    switch (A) {
         // fifo
         case 0:
             hit = fifo();
@@ -283,6 +292,8 @@ int main(){
             printf("wrong algorithm number input, check again");
             exit(-1);
     }
-    printf("Hit ratio = %.2f%%", hit * 1.0 * 100 / N * 1.0 );
+    printf("Hit ratio = %.2f%%\n", hit * 1.0 * 100 / N * 1.0);
+    end_t = clock();
+    printf("Running time is %.6f s", (double) (end_t - start_t) / CLOCKS_PER_SEC);
     return 0;
 }

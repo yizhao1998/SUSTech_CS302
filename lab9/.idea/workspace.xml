@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4620">
-              <caret line="210" column="16" lean-forward="true" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
+            <state relative-caret-position="643">
+              <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -37,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///usr/include/c++/7/ext/new_allocator.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
+            <state relative-caret-position="2728">
               <caret line="124" selection-start-line="124" selection-end-line="124" />
             </state>
           </provider>
@@ -86,8 +86,8 @@
       <list>
         <option value="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/1.in" />
         <option value="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/2.in" />
-        <option value="$PROJECT_DIR$/cmake-build-debug/1.in" />
         <option value="$PROJECT_DIR$/cmake-build-debug/test.in" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/1.in" />
         <option value="$PROJECT_DIR$/cmake-build-debug/2.in" />
         <option value="$PROJECT_DIR$/cmake-build-debug/3.in" />
         <option value="$PROJECT_DIR$/main.cpp" />
@@ -104,6 +104,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,7 +121,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -165,11 +165,14 @@
       <workItem from="1557100568608" duration="2326000" />
       <workItem from="1557106796629" duration="13529000" />
       <workItem from="1557124023632" duration="7015000" />
+      <workItem from="1557149810676" duration="804000" />
+      <workItem from="1557161201616" duration="2026000" />
+      <workItem from="1557202635528" duration="874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22870000" />
+    <option name="totallyTimeSpent" value="26574000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -183,7 +186,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1036" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2561629" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26688102" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -283,10 +286,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/1.in">
+    <entry file="file:///usr/include/c++/7/ext/new_allocator.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        <state relative-caret-position="2728">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
         </state>
       </provider>
     </entry>
@@ -297,10 +300,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/7/ext/new_allocator.h">
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/1.in">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="22">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -320,8 +323,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4620">
-          <caret line="210" column="16" lean-forward="true" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
+        <state relative-caret-position="643">
+          <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
