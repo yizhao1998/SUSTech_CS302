@@ -31,9 +31,9 @@ int main() {
     for (int i = 1; i < MAX_THREAD_NUM; i++) {
         merge(0, nodelist[i].l-1, nodelist[i].r);
     }
-    // for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
-    //     printf("%d ", arr[i]);
-    // }
+    for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
+        printf("%d ", arr[i]);
+    }
     // printf("\n");
     long totaltime = get_current_time() - start_time;
     printf("此程序的运行时间为%lld ms！", totaltime);

@@ -29,25 +29,24 @@ struct node {
 void merge(int l, int mid, int r) {
     int iter_1 = l;
     int iter_2 = mid + 1;
-    memcpy(new_arr, arr+l, sizeof(int) * (r-l+1));
-    int iter = 0;
+    memcpy(new_arr+l, arr+l, sizeof(int) * (r-l+1));
+    int iter = l;
     while (iter_1 <= mid && iter_2 <= r) {
-        if (arr[iter_1] < arr[iter_2]) {
-            new_arr[iter++] = arr[iter_1++];
+        if (new_arr[iter_1] < new_arr[iter_2]) {
+            arr[iter++] = new_arr[iter_1++];
         } else {
-            new_arr[iter++] = arr[iter_2++];
+            arr[iter++] = new_arr[iter_2++];
         }
     }
     if (iter_1 <= mid) {
         while (iter_1 <= mid) {
-            new_arr[iter++] = arr[iter_1++];
+            arr[iter++] = new_arr[iter_1++];
         }
     } else {
         while (iter_2 <= r) {
-            new_arr[iter++] = arr[iter_2++];
+            arr[iter++] = new_arr[iter_2++];
         }
     }
-    memcpy(arr+l, new_arr, sizeof(int) * (r-l+1));
 }
 
 void *merge_sort(void *args) {
@@ -74,10 +73,10 @@ void *merge_sort(void *args) {
 
 int main() {
     thread_num = 0;
-    freopen("1.out", "w", stdout);
+    // freopen("1.out", "w", stdout);
     srand(time(NULL));
     for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
-        arr[i] = rand() % 40 - 20;
+        arr[i] = rand() % 1000 - 20;
     }
     int len = MAX_ARRAY_SIZE / MAX_THREAD_NUM;
     int l = 0;
@@ -100,15 +99,23 @@ int main() {
     for (int i = 0; i < MAX_THREAD_NUM; i++) {
         pthread_join(threads[i], NULL);
     } 
+    // for (int i = 0; i < MAX_THREAD_NUM; ++i) {
+    //     for(int j=nodelist[i].l; j < nodelist[i].r; j++){
+    //         printf("%d ", arr[j]);
+    //     }
+    //     printf("\n");
+    //     printf("\n");
+    // }
     for (int i = 1; i < MAX_THREAD_NUM; i++) {
         merge(0, nodelist[i].l-1, nodelist[i].r);
     }
-    // for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
-    //     printf("%d ", arr[i]);
-    // }
-    // printf("\n");
+    
+    for (int i = 0; i < MAX_ARRAY_SIZE; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
     long totaltime = get_current_time() - start_time;
-    printf("此程序的运行时间为%lld ms！", totaltime);
+    printf("此程序的运行时间为%lld ms！\n", totaltime);
     pthread_exit(NULL);
     return 0;
 }
