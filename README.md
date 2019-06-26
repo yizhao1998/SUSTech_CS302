@@ -1,4 +1,4 @@
-# operating-system
+# Operating System SUSTech_CS302
 
 Yi Zhao @ SUSTech 2019
 
